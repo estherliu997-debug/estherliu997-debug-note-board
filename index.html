@@ -7,18 +7,20 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --purple: #6c5ce7;
-      --purple-dark: #5a4bd1;
-      --purple-light: #a29bfe;
-      --blue: #54a0ff;
-      --gray: #8395a7;
-      --bg: #f5f3ff;
+      --primary: #6b9e7c;
+      --primary-dark: #5a8a6b;
+      --primary-light: #a8d5b4;
+      --secondary: #c4a87c;
+      --secondary-light: #e8d8c0;
+      --blue: #5a9fb8;
+      --gray: #8e9a8e;
+      --bg: #f5f7f3;
       --card-bg: #ffffff;
       --text: #2d3436;
-      --text-sub: #636e72;
-      --text-muted: #b2bec3;
-      --border: #e8e5f0;
-      --shadow: 0 2px 12px rgba(108,92,231,0.06);
+      --text-sub: #6b7a6b;
+      --text-muted: #a8b4a8;
+      --border: #e0e6d8;
+      --shadow: 0 2px 12px rgba(107,158,124,0.06);
       --radius: 16px;
     }
     body {
@@ -31,12 +33,12 @@
 
     /* ===== Header ===== */
     .header {
-      background: linear-gradient(135deg, #6c5ce7 0%, #7c6cf0 50%, #8b7cf7 100%);
+      background: linear-gradient(135deg, #5a8a6b 0%, #6b9e7c 50%, #7ab08a 100%);
       padding: 24px 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 4px 20px rgba(108,92,231,0.15);
+      box-shadow: 0 4px 20px rgba(90,138,107,0.15);
     }
     .header-left { display: flex; align-items: center; gap: 16px; }
     .header-emoji { font-size: 32px; }
@@ -68,10 +70,10 @@
       gap: 6px;
     }
     .tab-item.active {
-      color: var(--purple);
-      background: rgba(108,92,231,0.08);
-      border: 1px solid rgba(108,92,231,0.15);
-      border-bottom: 2px solid var(--purple);
+      color: var(--primary);
+      background: rgba(107,158,124,0.08);
+      border: 1px solid rgba(107,158,124,0.15);
+      border-bottom: 2px solid var(--primary);
       margin-bottom: -2px;
     }
     .tab-item:not(.active) { opacity: 0.5; }
@@ -90,7 +92,7 @@
     .section-label .text { font-size: 16px; font-weight: 800; color: var(--text); }
     .tag {
       font-size: 11px; font-weight: 600; padding: 3px 12px;
-      background: rgba(108,92,231,0.08); color: var(--purple);
+      background: rgba(107,158,124,0.08); color: var(--primary);
       border-radius: 20px;
     }
 
@@ -111,9 +113,9 @@
       top: 0; left: 0; right: 0;
       height: 4px;
     }
-    .bench-card.top::before { background: linear-gradient(90deg, #6c5ce7, #a29bfe); }
-    .bench-card.avg::before { background: linear-gradient(90deg, #54a0ff, #7ec8ff); }
-    .bench-card.low::before { background: linear-gradient(90deg, #b2bec3, #dfe6e9); }
+    .bench-card.top::before { background: linear-gradient(90deg, #6b9e7c, #a8d5b4); }
+    .bench-card.avg::before { background: linear-gradient(90deg, #5a9fb8, #7ec8d8); }
+    .bench-card.low::before { background: linear-gradient(90deg, #c4a87c, #e8d8c0); }
     .bench-tier {
       font-size: 14px; font-weight: 700; margin-bottom: 20px;
       display: flex; align-items: center; gap: 6px;
@@ -124,12 +126,12 @@
       align-items: baseline;
       padding: 10px 0;
     }
-    .bench-row + .bench-row { border-top: 1px solid #f1f0f7; }
+    .bench-row + .bench-row { border-top: 1px solid #eef2ea; }
     .bench-label { font-size: 13px; color: var(--text-sub); }
     .bench-val { font-size: 26px; font-weight: 900; letter-spacing: -1px; line-height: 1; }
-    .bench-card.top .bench-val { color: var(--purple); }
+    .bench-card.top .bench-val { color: var(--primary); }
     .bench-card.avg .bench-val { color: var(--blue); }
-    .bench-card.low .bench-val { color: var(--gray); }
+    .bench-card.low .bench-val { color: var(--secondary); }
     .bench-unit { font-size: 13px; font-weight: 500; color: var(--text-muted); margin-left: 2px; }
     .bench-footer {
       font-size: 12px;
@@ -156,96 +158,13 @@
       align-items: flex-start;
       gap: 10px;
       padding: 14px 18px;
-      background: #f8f7ff;
+      background: #f2f6f0;
       border-radius: 12px;
-      border: 1px solid #e8e5f0;
+      border: 1px solid #e0e6d8;
       font-size: 13px;
       line-height: 1.7;
     }
     .trend-item .emoji { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
-
-    /* ===== Tables ===== */
-    .table-wrap {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-    table { width: 100%; border-collapse: collapse; }
-    th {
-      background: #f8f7ff;
-      padding: 12px 16px;
-      font-size: 12px;
-      font-weight: 700;
-      text-align: left;
-      color: var(--text-sub);
-      border-bottom: 1px solid var(--border);
-    }
-    td {
-      padding: 12px 16px;
-      font-size: 13px;
-      border-bottom: 1px solid #f5f3ff;
-      vertical-align: middle;
-    }
-    tr:hover { background: #f8f7ff; }
-    td a {
-      color: var(--purple);
-      text-decoration: none;
-      font-weight: 600;
-    }
-    td a:hover { text-decoration: underline; }
-    .rank {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 26px;
-      height: 26px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 800;
-      background: #f1f0f7;
-      color: var(--text-sub);
-    }
-    .rank.gold { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; }
-    .rank.silver { background: linear-gradient(135deg, #f1f5f9, #e2e8f0); color: #475569; }
-    .rank.bronze { background: linear-gradient(135deg, #fed7aa, #fdba74); color: #9a3412; }
-    .ctr-badge {
-      display: inline-block;
-      padding: 2px 10px;
-      border-radius: 6px;
-      font-size: 13px;
-      font-weight: 700;
-    }
-    .ctr-badge.high { background: #dcfce7; color: #166534; }
-    .ctr-badge.mid { background: #fef3c7; color: #92400e; }
-    .ctr-badge.low { background: #fee2e2; color: #991b1b; }
-
-    /* ===== Title List ===== */
-    .titles-box {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      padding: 20px 24px;
-      box-shadow: var(--shadow);
-    }
-    .title-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 14px;
-      border-bottom: 1px solid #f5f3ff;
-      border-radius: 8px;
-      transition: background 0.15s ease;
-    }
-    .title-item:hover { background: #f8f7ff; }
-    .title-item:last-child { border-bottom: none; }
-    .title-text { font-size: 13px; font-weight: 500; flex: 1; margin-right: 12px; }
-    .title-meta { display: flex; gap: 8px; flex-shrink: 0; }
-    .title-meta span {
-      font-size: 11px; color: var(--text-muted); font-weight: 500;
-      padding: 2px 8px; background: #f1f0f7; border-radius: 4px;
-    }
 
     /* ===== Titles by Category ===== */
     .cat-titles-grid {
@@ -263,7 +182,7 @@
     }
     .cat-title-card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 20px rgba(108,92,231,0.1);
+      box-shadow: 0 4px 20px rgba(107,158,124,0.1);
     }
     .cat-title-header {
       padding: 14px 20px;
@@ -290,7 +209,7 @@
       align-items: flex-start;
       gap: 10px;
       padding: 10px 0;
-      border-bottom: 1px solid #f5f3ff;
+      border-bottom: 1px solid #f2f6f0;
       font-size: 13px;
       line-height: 1.5;
     }
@@ -302,8 +221,8 @@
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      background: rgba(108,92,231,0.08);
-      color: var(--purple);
+      background: rgba(107,158,124,0.08);
+      color: var(--primary);
       font-size: 11px;
       font-weight: 700;
       flex-shrink: 0;
@@ -316,7 +235,7 @@
       text-decoration: none;
       transition: color 0.15s ease;
     }
-    .cat-title-text:hover { color: var(--purple); }
+    .cat-title-text:hover { color: var(--primary); }
     .cat-title-meta {
       font-size: 11px;
       color: var(--text-muted);
@@ -337,8 +256,8 @@
       align-items: center;
     }
     .cat-name { font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
-    .cat-name .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--purple); }
-    .cat-ctr { font-size: 18px; font-weight: 800; color: var(--purple); letter-spacing: -0.5px; }
+    .cat-name .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--primary); }
+    .cat-ctr { font-size: 18px; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; }
     .cat-count { font-size: 11px; color: var(--text-muted); margin-top: 2px; text-align: right; }
 
     /* ===== Footer ===== */
@@ -448,71 +367,6 @@
 <div class="trend-item">📌 结果前置型（X天/X斤/断妆等效果描述），占比约16%</div>
 <div class="trend-item">📌 价格冲击型（超低价/包邮/尝鲜），占比约2%</div>
 
-  </div>
-
-  <!-- 高双高封面 -->
-  <div class="section-label">
-    <span class="icon">🖼️</span>
-    <span class="text">高双高封面候选</span>
-    <span class="tag">封面CTR≥8% · 商卡CTR≥15%</span>
-  </div>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th style="width:50px">排名</th>
-          <th>笔记标题</th>
-          <th style="width:90px">曝光量</th>
-          <th style="width:80px">封面CTR</th>
-          <th style="width:80px">商卡CTR</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="rank gold">1</span></td>
-          <td><a href="https://www.xiaohongshu.com/explore/69f1dbba000000003701f3d6" target="_blank">是谁！低领半杯细肩带 做出来了！😭快拍！！</a></td>
-          <td>16万</td>
-          <td><span class="ctr-badge high">109.3%</span></td>
-          <td><span class="ctr-badge high">23.7%</span></td>
-        </tr>
-<tr>
-          <td><span class="rank silver">2</span></td>
-          <td><a href="https://www.xiaohongshu.com/explore/69f8c8f70000000023006115" target="_blank">可不可以是平的没有两个耳朵？可以！去掉了</a></td>
-          <td>12万</td>
-          <td><span class="ctr-badge high">106.2%</span></td>
-          <td><span class="ctr-badge high">17.5%</span></td>
-        </tr>
-<tr>
-          <td><span class="rank bronze">3</span></td>
-          <td><a href="https://www.xiaohongshu.com/explore/699c2d28000000000a033cca" target="_blank">我愿意称之为母亲节礼物天花板😎！！</a></td>
-          <td>12万</td>
-          <td><span class="ctr-badge high">92.6%</span></td>
-          <td><span class="ctr-badge high">28.9%</span></td>
-        </tr>
-<tr>
-          <td><span class="rank ">4</span></td>
-          <td><a href="https://www.xiaohongshu.com/explore/69fc550a000000003701d446" target="_blank">老婆们！ “胸贴式”内衣我做出来了！！😎</a></td>
-          <td>9万</td>
-          <td><span class="ctr-badge high">106.2%</span></td>
-          <td><span class="ctr-badge high">15.0%</span></td>
-        </tr>
-<tr>
-          <td><span class="rank ">5</span></td>
-          <td><a href="https://www.xiaohongshu.com/explore/69f81529000000003501f59a" target="_blank">设计师是女的吧！内裤缝合线痛点不卡分泌物</a></td>
-          <td>9万</td>
-          <td><span class="ctr-badge high">109.4%</span></td>
-          <td><span class="ctr-badge high">30.1%</span></td>
-        </tr>
-<tr>
-          <td><span class="rank ">6</span></td>
-          <td><a href="https://www.xiaohongshu.com/explore/69f8ae1c0000000038034f8d" target="_blank">没戴胸贴…夏天的风都是凉飕飕的！</a></td>
-          <td>7万</td>
-          <td><span class="ctr-badge high">108.7%</span></td>
-          <td><span class="ctr-badge high">20.4%</span></td>
-        </tr>
-
-      </tbody>
-    </table>
   </div>
 
   <!-- 高曝光标题（按二级类目） -->
