@@ -140,54 +140,6 @@
       line-height: 1.5;
     }
 
-    /* ===== Content Trends (Category Cards) ===== */
-    .trend-category-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-    }
-    .trend-category-card {
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-    }
-    .trend-category-header {
-      padding: 14px 20px;
-      font-size: 14px;
-      font-weight: 700;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .trend-category-body { padding: 16px 20px; }
-    .trend-category-item {
-      display: flex;
-      gap: 10px;
-      padding: 10px 0;
-      border-bottom: 1px solid #f5f3ff;
-      font-size: 13px;
-      line-height: 1.7;
-      color: var(--text);
-    }
-    .trend-category-item:last-child { border-bottom: none; }
-    .trend-item-num {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: rgba(108,92,231,0.08);
-      color: var(--purple);
-      font-size: 11px;
-      font-weight: 700;
-      flex-shrink: 0;
-      margin-top: 3px;
-    }
-
     /* ===== Directions Box ===== */
     .directions-box {
       background: var(--card-bg);
@@ -243,6 +195,21 @@
       font-weight: 600;
     }
     td a:hover { text-decoration: underline; }
+    .rank {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      background: #f1f0f7;
+      color: var(--text-sub);
+    }
+    .rank.gold { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; }
+    .rank.silver { background: linear-gradient(135deg, #f1f5f9, #e2e8f0); color: #475569; }
+    .rank.bronze { background: linear-gradient(135deg, #fed7aa, #fdba74); color: #9a3412; }
     .ctr-badge {
       display: inline-block;
       padding: 2px 10px;
@@ -278,6 +245,83 @@
     .title-meta span {
       font-size: 11px; color: var(--text-muted); font-weight: 500;
       padding: 2px 8px; background: #f1f0f7; border-radius: 4px;
+    }
+
+    /* ===== Titles by Category ===== */
+    .cat-titles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .cat-title-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .cat-title-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(108,92,231,0.1);
+    }
+    .cat-title-header {
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .cat-title-icon { font-size: 16px; }
+    .cat-title-count {
+      margin-left: auto;
+      font-size: 12px;
+      font-weight: 500;
+      opacity: 0.8;
+      background: rgba(255,255,255,0.15);
+      padding: 2px 10px;
+      border-radius: 12px;
+    }
+    .cat-title-body { padding: 12px 20px 16px; }
+    .cat-title-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f5f3ff;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .cat-title-item:last-child { border-bottom: none; }
+    .cat-title-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(108,92,231,0.08);
+      color: var(--purple);
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .cat-title-text {
+      flex: 1;
+      color: var(--text);
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    .cat-title-text:hover { color: var(--purple); }
+    .cat-title-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      white-space: nowrap;
     }
 
     /* ===== Category Breakdown ===== */
@@ -317,7 +361,7 @@
       .bench-grid { grid-template-columns: 1fr; }
       .directions-box { grid-template-columns: 1fr; }
       .cat-grid { grid-template-columns: 1fr; }
-      .trend-category-grid { grid-template-columns: 1fr; }
+      .cat-titles-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -392,7 +436,7 @@
     </div>
   </div>
 
-  <!-- 本周内容风向 -->
+  <!-- 内容风向 -->
   <div class="section-label">
     <span class="icon">🧭</span>
     <span class="text">本周内容风向</span>
@@ -416,79 +460,69 @@
     <table>
       <thead>
         <tr>
-          <th>#</th>
+          <th style="width:50px">排名</th>
           <th>笔记标题</th>
-          <th>曝光量</th>
-          <th>封面CTR</th>
-          <th>商卡CTR</th>
+          <th style="width:90px">曝光量</th>
+          <th style="width:80px">封面CTR</th>
+          <th style="width:80px">商卡CTR</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>1</td>
+          <td><span class="rank gold">1</span></td>
           <td><a href="https://www.xiaohongshu.com/explore/69f1dbba000000003701f3d6" target="_blank">是谁！低领半杯细肩带 做出来了！😭快拍！！</a></td>
           <td>16万</td>
-          <td>109.3%</td>
-          <td>23.7%</td>
+          <td><span class="ctr-badge high">109.3%</span></td>
+          <td><span class="ctr-badge high">23.7%</span></td>
         </tr>
 <tr>
-          <td>2</td>
+          <td><span class="rank silver">2</span></td>
           <td><a href="https://www.xiaohongshu.com/explore/69f8c8f70000000023006115" target="_blank">可不可以是平的没有两个耳朵？可以！去掉了</a></td>
           <td>12万</td>
-          <td>106.2%</td>
-          <td>17.5%</td>
+          <td><span class="ctr-badge high">106.2%</span></td>
+          <td><span class="ctr-badge high">17.5%</span></td>
         </tr>
 <tr>
-          <td>3</td>
+          <td><span class="rank bronze">3</span></td>
           <td><a href="https://www.xiaohongshu.com/explore/699c2d28000000000a033cca" target="_blank">我愿意称之为母亲节礼物天花板😎！！</a></td>
           <td>12万</td>
-          <td>92.6%</td>
-          <td>28.9%</td>
+          <td><span class="ctr-badge high">92.6%</span></td>
+          <td><span class="ctr-badge high">28.9%</span></td>
         </tr>
 <tr>
-          <td>4</td>
+          <td><span class="rank ">4</span></td>
           <td><a href="https://www.xiaohongshu.com/explore/69fc550a000000003701d446" target="_blank">老婆们！ “胸贴式”内衣我做出来了！！😎</a></td>
           <td>9万</td>
-          <td>106.2%</td>
-          <td>15.0%</td>
+          <td><span class="ctr-badge high">106.2%</span></td>
+          <td><span class="ctr-badge high">15.0%</span></td>
         </tr>
 <tr>
-          <td>5</td>
+          <td><span class="rank ">5</span></td>
           <td><a href="https://www.xiaohongshu.com/explore/69f81529000000003501f59a" target="_blank">设计师是女的吧！内裤缝合线痛点不卡分泌物</a></td>
           <td>9万</td>
-          <td>109.4%</td>
-          <td>30.1%</td>
+          <td><span class="ctr-badge high">109.4%</span></td>
+          <td><span class="ctr-badge high">30.1%</span></td>
         </tr>
 <tr>
-          <td>6</td>
+          <td><span class="rank ">6</span></td>
           <td><a href="https://www.xiaohongshu.com/explore/69f8ae1c0000000038034f8d" target="_blank">没戴胸贴…夏天的风都是凉飕飕的！</a></td>
           <td>7万</td>
-          <td>108.7%</td>
-          <td>20.4%</td>
+          <td><span class="ctr-badge high">108.7%</span></td>
+          <td><span class="ctr-badge high">20.4%</span></td>
         </tr>
 
       </tbody>
     </table>
   </div>
 
-  <!-- 高曝光标题 -->
+  <!-- 高曝光标题（按二级类目） -->
   <div class="section-label">
     <span class="icon">📝</span>
-    <span class="text">本周高曝光标题参考</span>
-    <span class="tag">TOP 10</span>
+    <span class="text">高曝光标题参考</span>
+    <span class="tag">按二级类目分组 · TOP5</span>
   </div>
-  <div class="titles-box">
-    <div class="title-item">「蕉树内衣三件39.9！凉感隐形还香香谁不爱」<span class="title-meta">81万曝光 · 封面CTR 2.0%</span></div>
-<div class="title-item">「“39块钱的衣服能好到哪里去……”」<span class="title-meta">72万曝光 · 封面CTR 1.2%</span></div>
-<div class="title-item">「沉浸式回答领口会不会变形❗️❗️❗️」<span class="title-meta">51万曝光 · 封面CTR 0.0%</span></div>
-<div class="title-item">「网友们的建议我们都收到了！！！！！」<span class="title-meta">47万曝光 · 封面CTR 0.1%</span></div>
-<div class="title-item">「才30+好穿到穿烂了！！！！」<span class="title-meta">43万曝光 · 封面CTR 0.3%</span></div>
-<div class="title-item">「我媳妇大副乳遮没了⁉️大U吊带遮副乳太牛了」<span class="title-meta">39万曝光 · 封面CTR 1.4%</span></div>
-<div class="title-item">「运动背心、束胸、粉底液内衣三合一！」<span class="title-meta">35万曝光 · 封面CTR 0.1%</span></div>
-<div class="title-item">「姐妹们！丝袜上身🈴集来咯‼️全拿捏🤏」<span class="title-meta">26万曝光 · 封面CTR 0.0%</span></div>
-<div class="title-item">「沉浸式回答船袜会不会掉跟❗️❗️❗️」<span class="title-meta">25万曝光 · 封面CTR 0.0%</span></div>
-<div class="title-item">「穿低领衣服的时候 真的不需要做那么高🙏」<span class="title-meta">24万曝光 · 封面CTR 104.3%</span></div>
-
+  <div class="cat-titles-grid">
+    
   </div>
 
   <!-- 二级类目分布 -->
@@ -498,12 +532,48 @@
     <span class="tag">按曝光量排序</span>
   </div>
   <div class="cat-grid">
-    <div class="cat-item">📦 吊带/背心/T恤：均值CTR 4.9%，共65篇</div>
-<div class="cat-item">📦 文胸：均值CTR 52.0%，共49篇</div>
-<div class="cat-item">📦 短袜/打底袜/丝袜/美腿袜：均值CTR 17.8%，共32篇</div>
-<div class="cat-item">📦 女士内裤（不含男士）：均值CTR 29.5%，共11篇</div>
-<div class="cat-item">📦 睡裙：均值CTR 3.3%，共12篇</div>
-<div class="cat-item">📦 睡衣/家居服套装：均值CTR 47.5%，共9篇</div>
+    <div class="cat-item">
+          <div class="cat-name"><span class="dot"></span>吊带/背心/T恤</div>
+          <div class="cat-stats">
+            <div class="cat-ctr">4.9%</div>
+            <div class="cat-count">均CTR · 共65篇</div>
+          </div>
+        </div>
+<div class="cat-item">
+          <div class="cat-name"><span class="dot"></span>文胸</div>
+          <div class="cat-stats">
+            <div class="cat-ctr">52.0%</div>
+            <div class="cat-count">均CTR · 共49篇</div>
+          </div>
+        </div>
+<div class="cat-item">
+          <div class="cat-name"><span class="dot"></span>短袜/打底袜/丝袜/美腿袜</div>
+          <div class="cat-stats">
+            <div class="cat-ctr">17.8%</div>
+            <div class="cat-count">均CTR · 共32篇</div>
+          </div>
+        </div>
+<div class="cat-item">
+          <div class="cat-name"><span class="dot"></span>女士内裤（不含男士）</div>
+          <div class="cat-stats">
+            <div class="cat-ctr">29.5%</div>
+            <div class="cat-count">均CTR · 共11篇</div>
+          </div>
+        </div>
+<div class="cat-item">
+          <div class="cat-name"><span class="dot"></span>睡裙</div>
+          <div class="cat-stats">
+            <div class="cat-ctr">3.3%</div>
+            <div class="cat-count">均CTR · 共12篇</div>
+          </div>
+        </div>
+<div class="cat-item">
+          <div class="cat-name"><span class="dot"></span>睡衣/家居服套装</div>
+          <div class="cat-stats">
+            <div class="cat-ctr">47.5%</div>
+            <div class="cat-count">均CTR · 共9篇</div>
+          </div>
+        </div>
 
   </div>
 
@@ -511,7 +581,7 @@
 
 <div class="footer">
   小红书电商 · 女士内衣/男士内衣/家居服行业 · 数据来源：小红书 BI 平台 · 每周更新<br>
-  生成时间：2026-05-12 17:12
+  生成时间：2026-05-12 21:44
 </div>
 
 </body>
