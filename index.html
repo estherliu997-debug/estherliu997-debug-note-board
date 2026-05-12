@@ -3,32 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>女士内衣/男士内衣/家居服 行业风向看板 · 小红书电商</title>
+  <title>女士内衣/男士内衣/家居服行业风向看板 · 小红书电商</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --primary: #ff2442;
-      --primary-light: #ff6b6b;
-      --secondary: #ff6b35;
-      --accent: #6366f1;
-      --success: #10b981;
-      --warning: #f59e0b;
-      --danger: #ef4444;
-      --bg: #f8f9fc;
+      --purple: #6c5ce7;
+      --purple-dark: #5a4bd1;
+      --purple-light: #a29bfe;
+      --blue: #54a0ff;
+      --gray: #8395a7;
+      --bg: #f5f3ff;
       --card-bg: #ffffff;
-      --text: #1e293b;
-      --text-secondary: #64748b;
-      --text-muted: #94a3b8;
-      --border: #e2e8f0;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -1px rgba(0,0,0,0.04);
-      --shadow-lg: 0 10px 25px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.03);
+      --text: #2d3436;
+      --text-sub: #636e72;
+      --text-muted: #b2bec3;
+      --border: #e8e5f0;
+      --shadow: 0 2px 12px rgba(108,92,231,0.06);
       --radius: 16px;
-      --radius-sm: 10px;
     }
-
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Helvetica Neue", sans-serif;
+      font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -37,255 +31,186 @@
 
     /* ===== Header ===== */
     .header {
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
-      padding: 48px 48px 40px;
-      position: relative;
-      overflow: hidden;
-    }
-    .header::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -10%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(255,36,66,0.15) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-    .header::after {
-      content: '';
-      position: absolute;
-      bottom: -30%;
-      left: 20%;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(99,102,241,0.1) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
+      background: linear-gradient(135deg, #6c5ce7 0%, #7c6cf0 50%, #8b7cf7 100%);
+      padding: 24px 48px;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: space-between;
-      position: relative;
-      z-index: 1;
+      box-shadow: 0 4px 20px rgba(108,92,231,0.15);
     }
-    .header-left { flex: 1; }
-    .header-badge {
-      display: inline-flex;
+    .header-left { display: flex; align-items: center; gap: 16px; }
+    .header-emoji { font-size: 32px; }
+    .header-title { font-size: 22px; font-weight: 800; color: #fff; }
+    .header-sub { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+    .header-right { text-align: right; }
+    .header-week { font-size: 36px; font-weight: 900; color: #fff; line-height: 1; }
+    .header-date { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+    /* ===== Tab Nav ===== */
+    .tab-nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 32px 0;
+      display: flex;
+      gap: 4px;
+      border-bottom: 2px solid var(--border);
+    }
+    .tab-item {
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: default;
+      border-radius: 8px 8px 0 0;
+      transition: all 0.2s ease;
+      display: flex;
       align-items: center;
       gap: 6px;
-      background: rgba(255,36,66,0.15);
-      border: 1px solid rgba(255,36,66,0.25);
-      color: #ff6b6b;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 4px 14px;
-      border-radius: 20px;
-      margin-bottom: 16px;
-      backdrop-filter: blur(10px);
     }
-    .header-badge::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: var(--primary);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
+    .tab-item.active {
+      color: var(--purple);
+      background: rgba(108,92,231,0.08);
+      border: 1px solid rgba(108,92,231,0.15);
+      border-bottom: 2px solid var(--purple);
+      margin-bottom: -2px;
     }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-    .header-title {
-      font-size: 32px;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -0.5px;
-      line-height: 1.2;
-    }
-    .header-sub {
-      font-size: 14px;
-      color: rgba(255,255,255,0.55);
-      margin-top: 8px;
-    }
-    .header-right { text-align: right; }
-    .header-week {
-      font-size: 48px;
-      font-weight: 900;
-      background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1;
-    }
-    .header-date {
-      font-size: 13px;
-      color: rgba(255,255,255,0.45);
-      margin-top: 6px;
-    }
-    .header-notes-count {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 6px 16px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 8px;
-      color: rgba(255,255,255,0.7);
-      font-size: 13px;
-      font-weight: 500;
-      backdrop-filter: blur(10px);
-    }
+    .tab-item:not(.active) { opacity: 0.5; }
 
     /* ===== Container ===== */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 32px 100px;
-    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 28px 32px 80px; }
 
     /* ===== Section Labels ===== */
     .section-label {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin: 48px 0 20px;
+      gap: 10px;
+      margin: 32px 0 18px;
     }
-    .section-label .icon {
-      font-size: 22px;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--card-bg);
-      border-radius: 12px;
-      box-shadow: var(--shadow-sm);
-    }
-    .section-label .text {
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--text);
-      letter-spacing: -0.3px;
-    }
-    .section-label .tag {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 4px 12px;
-      background: linear-gradient(135deg, #fff0f2, #ffe8ec);
-      color: var(--primary);
+    .section-label .icon { font-size: 20px; }
+    .section-label .text { font-size: 16px; font-weight: 800; color: var(--text); }
+    .tag {
+      font-size: 11px; font-weight: 600; padding: 3px 12px;
+      background: rgba(108,92,231,0.08); color: var(--purple);
       border-radius: 20px;
-      border: 1px solid rgba(255,36,66,0.1);
     }
 
     /* ===== Benchmark Cards ===== */
-    .bench-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
+    .bench-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .bench-card {
       background: var(--card-bg);
       border-radius: var(--radius);
       border: 1px solid var(--border);
-      padding: 28px 24px;
-      box-shadow: var(--shadow-sm);
+      padding: 28px 24px 20px;
+      box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .bench-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
     }
     .bench-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
+      top: 0; left: 0; right: 0;
+      height: 4px;
     }
-    .bench-card.top::before {
-      background: linear-gradient(90deg, #fbbf24, #f59e0b);
-    }
-    .bench-card.avg::before {
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-    }
-    .bench-card.low::before {
-      background: linear-gradient(90deg, #94a3b8, #64748b);
-    }
+    .bench-card.top::before { background: linear-gradient(90deg, #6c5ce7, #a29bfe); }
+    .bench-card.avg::before { background: linear-gradient(90deg, #54a0ff, #7ec8ff); }
+    .bench-card.low::before { background: linear-gradient(90deg, #b2bec3, #dfe6e9); }
     .bench-tier {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: var(--text-secondary);
+      font-size: 14px; font-weight: 700; margin-bottom: 20px;
+      display: flex; align-items: center; gap: 6px;
     }
-    .bench-tier .emoji { font-size: 18px; }
-    .bench-metrics { display: flex; flex-direction: column; gap: 16px; }
-    .bench-metric {
+    .bench-row {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
+      padding: 10px 0;
     }
-    .bench-metric-label {
-      font-size: 13px;
+    .bench-row + .bench-row { border-top: 1px solid #f1f0f7; }
+    .bench-label { font-size: 13px; color: var(--text-sub); }
+    .bench-val { font-size: 26px; font-weight: 900; letter-spacing: -1px; line-height: 1; }
+    .bench-card.top .bench-val { color: var(--purple); }
+    .bench-card.avg .bench-val { color: var(--blue); }
+    .bench-card.low .bench-val { color: var(--gray); }
+    .bench-unit { font-size: 13px; font-weight: 500; color: var(--text-muted); margin-left: 2px; }
+    .bench-footer {
+      font-size: 12px;
       color: var(--text-muted);
-      font-weight: 500;
-    }
-    .bench-metric-value {
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: -1px;
-      line-height: 1;
-    }
-    .bench-card.top .bench-metric-value { color: #f59e0b; }
-    .bench-card.avg .bench-metric-value { color: var(--primary); }
-    .bench-card.low .bench-metric-value { color: var(--text-muted); }
-    .bench-unit {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-muted);
-      margin-left: 2px;
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
+      line-height: 1.5;
     }
 
-    /* ===== Trend / Directions ===== */
+    /* ===== Content Trends (Category Cards) ===== */
+    .trend-category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .trend-category-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+    }
+    .trend-category-header {
+      padding: 14px 20px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .trend-category-body { padding: 16px 20px; }
+    .trend-category-item {
+      display: flex;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f5f3ff;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text);
+    }
+    .trend-category-item:last-child { border-bottom: none; }
+    .trend-item-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(108,92,231,0.08);
+      color: var(--purple);
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ===== Directions Box ===== */
     .directions-box {
       background: var(--card-bg);
       border-radius: var(--radius);
       border: 1px solid var(--border);
-      padding: 28px;
-      box-shadow: var(--shadow-sm);
+      padding: 24px;
+      box-shadow: var(--shadow);
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+      gap: 14px;
     }
     .trend-item {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
-      padding: 16px 20px;
-      background: linear-gradient(135deg, #f8f9fc, #f1f5f9);
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border);
-      font-size: 14px;
+      gap: 10px;
+      padding: 14px 18px;
+      background: #f8f7ff;
+      border-radius: 12px;
+      border: 1px solid #e8e5f0;
+      font-size: 13px;
       line-height: 1.7;
-      color: var(--text);
-      transition: all 0.2s ease;
     }
-    .trend-item:hover {
-      background: linear-gradient(135deg, #fff0f2, #ffe8ec);
-      border-color: rgba(255,36,66,0.15);
-    }
-    .trend-item .emoji {
-      font-size: 20px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
+    .trend-item .emoji { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
 
     /* ===== Tables ===== */
     .table-wrap {
@@ -293,54 +218,34 @@
       border-radius: var(--radius);
       border: 1px solid var(--border);
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
+      box-shadow: var(--shadow);
     }
     table { width: 100%; border-collapse: collapse; }
-    thead th {
-      background: linear-gradient(180deg, #f8f9fc 0%, #f1f5f9 100%);
-      padding: 14px 18px;
+    th {
+      background: #f8f7ff;
+      padding: 12px 16px;
       font-size: 12px;
       font-weight: 700;
       text-align: left;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      border-bottom: 2px solid var(--border);
+      color: var(--text-sub);
+      border-bottom: 1px solid var(--border);
     }
-    tbody td {
-      padding: 14px 18px;
-      font-size: 14px;
-      border-bottom: 1px solid #f1f5f9;
+    td {
+      padding: 12px 16px;
+      font-size: 13px;
+      border-bottom: 1px solid #f5f3ff;
       vertical-align: middle;
     }
-    tbody tr { transition: background 0.15s ease; }
-    tbody tr:hover { background: #f8f9fc; }
-    tbody tr:last-child td { border-bottom: none; }
+    tr:hover { background: #f8f7ff; }
     td a {
-      color: var(--primary);
+      color: var(--purple);
       text-decoration: none;
       font-weight: 600;
-      transition: color 0.15s ease;
     }
-    td a:hover { color: var(--secondary); text-decoration: underline; }
-    td .rank {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 26px;
-      height: 26px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 800;
-      background: #f1f5f9;
-      color: var(--text-secondary);
-    }
-    td .rank.gold { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; }
-    td .rank.silver { background: linear-gradient(135deg, #f1f5f9, #e2e8f0); color: #475569; }
-    td .rank.bronze { background: linear-gradient(135deg, #fed7aa, #fdba74); color: #9a3412; }
+    td a:hover { text-decoration: underline; }
     .ctr-badge {
       display: inline-block;
-      padding: 3px 10px;
+      padding: 2px 10px;
       border-radius: 6px;
       font-size: 13px;
       font-weight: 700;
@@ -354,194 +259,144 @@
       background: var(--card-bg);
       border-radius: var(--radius);
       border: 1px solid var(--border);
-      padding: 24px 28px;
-      box-shadow: var(--shadow-sm);
+      padding: 20px 24px;
+      box-shadow: var(--shadow);
     }
     .title-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 16px;
-      border-bottom: 1px solid #f1f5f9;
-      transition: all 0.15s ease;
+      padding: 10px 14px;
+      border-bottom: 1px solid #f5f3ff;
       border-radius: 8px;
+      transition: background 0.15s ease;
     }
-    .title-item:hover {
-      background: #f8f9fc;
-    }
+    .title-item:hover { background: #f8f7ff; }
     .title-item:last-child { border-bottom: none; }
-    .title-text {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text);
-      flex: 1;
-      margin-right: 16px;
-    }
-    .title-meta {
-      display: flex;
-      gap: 12px;
-      flex-shrink: 0;
-    }
+    .title-text { font-size: 13px; font-weight: 500; flex: 1; margin-right: 12px; }
+    .title-meta { display: flex; gap: 8px; flex-shrink: 0; }
     .title-meta span {
-      font-size: 12px;
-      color: var(--text-muted);
-      font-weight: 500;
-      padding: 3px 10px;
-      background: #f1f5f9;
-      border-radius: 6px;
+      font-size: 11px; color: var(--text-muted); font-weight: 500;
+      padding: 2px 8px; background: #f1f0f7; border-radius: 4px;
     }
 
     /* ===== Category Breakdown ===== */
-    .cat-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
+    .cat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .cat-item {
       background: var(--card-bg);
-      border-radius: var(--radius-sm);
+      border-radius: 12px;
       border: 1px solid var(--border);
-      padding: 20px 24px;
-      box-shadow: var(--shadow-sm);
+      padding: 16px 20px;
+      box-shadow: var(--shadow);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: all 0.2s ease;
     }
-    .cat-item:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-1px);
-    }
-    .cat-name {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .cat-name .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--primary);
-    }
-    .cat-stats { text-align: right; }
-    .cat-ctr {
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--primary);
-      letter-spacing: -0.5px;
-    }
-    .cat-count {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
+    .cat-name { font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+    .cat-name .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--purple); }
+    .cat-ctr { font-size: 18px; font-weight: 800; color: var(--purple); letter-spacing: -0.5px; }
+    .cat-count { font-size: 11px; color: var(--text-muted); margin-top: 2px; text-align: right; }
 
     /* ===== Footer ===== */
     .footer {
       text-align: center;
       color: var(--text-muted);
-      font-size: 13px;
-      padding: 32px;
-      margin-top: 60px;
+      font-size: 12px;
+      padding: 24px;
+      margin-top: 48px;
       border-top: 1px solid var(--border);
     }
-    .footer strong {
-      color: var(--text-secondary);
-      font-weight: 600;
-    }
+    .footer strong { color: var(--text-sub); font-weight: 600; }
 
     /* ===== Responsive ===== */
     @media (max-width: 768px) {
-      .header { padding: 32px 24px; }
-      .header-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .header { padding: 20px 24px; flex-direction: column; gap: 12px; }
       .header-right { text-align: left; }
-      .header-week { font-size: 36px; }
-      .header-title { font-size: 24px; }
-      .container { padding: 24px 16px 60px; }
+      .header-week { font-size: 28px; }
+      .container { padding: 20px 16px 60px; }
       .bench-grid { grid-template-columns: 1fr; }
       .directions-box { grid-template-columns: 1fr; }
       .cat-grid { grid-template-columns: 1fr; }
-      .section-label { flex-wrap: wrap; }
+      .trend-category-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<!-- ===== Header ===== -->
+<!-- Header -->
 <header class="header">
-  <div class="header-inner">
-    <div class="header-left">
-      <div class="header-badge">小红书电商 · 数据看板</div>
-      <h1 class="header-title">女士内衣/男士内衣/家居服 行业风向看板</h1>
-      <p class="header-sub">商品笔记内容趋势分析 · 爆款标题与封面 CTR 基准</p>
+  <div class="header-left">
+    <div class="header-emoji">👙</div>
+    <div>
+      <div class="header-title">女士内衣/男士内衣/家居服 行业风向看板</div>
+      <div class="header-sub">小红书电商 · 六组出品 · 每周更新</div>
     </div>
-    <div class="header-right">
-      <div class="header-week">W20</div>
-      <div class="header-date">20260505 — 20260512</div>
-      <div class="header-notes-count">📊 共 <strong>200</strong> 篇有效笔记</div>
-    </div>
+  </div>
+  <div class="header-right">
+    <div class="header-week">W20</div>
+    <div class="header-date">20260505 — 20260512</div>
   </div>
 </header>
 
-<!-- ===== Main Content ===== -->
+<!-- Tab Navigation -->
+<div class="tab-nav">
+  <div class="tab-item active">📊 趋势看板</div>
+  <div class="tab-item">🔍 账号诊断</div>
+  <div class="tab-item">🛠️ 实用工具</div>
+</div>
+
 <div class="container">
 
   <!-- 行业基准 -->
   <div class="section-label">
-    <div class="icon">📊</div>
-    <div class="text">行业基准数据</div>
-    <span class="tag">近 7 天 · 动销商家</span>
+    <span class="icon">📊</span>
+    <span class="text">行业基准数据</span>
+    <span class="tag">近7天 · 动销商家</span>
   </div>
   <div class="bench-grid">
     <div class="bench-card top">
-      <div class="bench-tier"><span class="emoji">🏆</span> TOP 商家</div>
-      <div class="bench-metrics">
-        <div class="bench-metric">
-          <span class="bench-metric-label">商笔 CTR</span>
-          <span class="bench-metric-value">106.9<span class="bench-unit">%</span></span>
-        </div>
-        <div class="bench-metric">
-          <span class="bench-metric-label">商品转化率</span>
-          <span class="bench-metric-value">10.8<span class="bench-unit">%</span></span>
-        </div>
+      <div class="bench-tier">🏆 TOP商家</div>
+      <div class="bench-row">
+        <span class="bench-label">商笔 CTR</span>
+        <span class="bench-val">106.9<span class="bench-unit">%</span></span>
       </div>
+      <div class="bench-row">
+        <span class="bench-label">商品转化率</span>
+        <span class="bench-val">10.8<span class="bench-unit">%</span></span>
+      </div>
+      <div class="bench-footer">发布量前 20% 动销商家参考区间</div>
     </div>
     <div class="bench-card avg">
-      <div class="bench-tier"><span class="emoji">📈</span> 行业均值</div>
-      <div class="bench-metrics">
-        <div class="bench-metric">
-          <span class="bench-metric-label">商笔 CTR</span>
-          <span class="bench-metric-value">31.7<span class="bench-unit">%</span></span>
-        </div>
-        <div class="bench-metric">
-          <span class="bench-metric-label">商品转化率</span>
-          <span class="bench-metric-value">6.0<span class="bench-unit">%</span></span>
-        </div>
+      <div class="bench-tier">📊 行业均值</div>
+      <div class="bench-row">
+        <span class="bench-label">商笔 CTR</span>
+        <span class="bench-val">31.7<span class="bench-unit">%</span></span>
       </div>
+      <div class="bench-row">
+        <span class="bench-label">商品转化率</span>
+        <span class="bench-val">6.0<span class="bench-unit">%</span></span>
+      </div>
+      <div class="bench-footer">全量动销商家均值</div>
     </div>
     <div class="bench-card low">
-      <div class="bench-tier"><span class="emoji">📉</span> 待提升</div>
-      <div class="bench-metrics">
-        <div class="bench-metric">
-          <span class="bench-metric-label">商笔 CTR</span>
-          <span class="bench-metric-value">0.2<span class="bench-unit">%</span></span>
-        </div>
-        <div class="bench-metric">
-          <span class="bench-metric-label">商品转化率</span>
-          <span class="bench-metric-value">2.5<span class="bench-unit">%</span></span>
-        </div>
+      <div class="bench-tier">⚠️ 待提升</div>
+      <div class="bench-row">
+        <span class="bench-label">商笔 CTR</span>
+        <span class="bench-val">0.2<span class="bench-unit">%</span></span>
       </div>
+      <div class="bench-row">
+        <span class="bench-label">商品转化率</span>
+        <span class="bench-val">2.5<span class="bench-unit">%</span></span>
+      </div>
+      <div class="bench-footer">低于行业均值 30%，需重点关注</div>
     </div>
   </div>
 
-  <!-- 内容风向 -->
+  <!-- 本周内容风向 -->
   <div class="section-label">
-    <div class="icon">🔥</div>
-    <div class="text">本周内容风向</div>
-    <span class="tag">基于真实数据分析</span>
+    <span class="icon">🧭</span>
+    <span class="text">本周内容风向</span>
+    <span class="tag">基于真实笔记标题分析</span>
   </div>
   <div class="directions-box">
     <div class="trend-item">📌 情绪共鸣型（感动/破防/主理人故事），占比约1%</div>
@@ -553,19 +408,19 @@
 
   <!-- 高双高封面 -->
   <div class="section-label">
-    <div class="icon">🖼️</div>
-    <div class="text">高双高封面候选</div>
-    <span class="tag">封面 CTR ≥ 8% · 商卡 CTR ≥ 15%</span>
+    <span class="icon">🖼️</span>
+    <span class="text">高双高封面候选</span>
+    <span class="tag">封面CTR≥8% · 商卡CTR≥15%</span>
   </div>
   <div class="table-wrap">
     <table>
       <thead>
         <tr>
-          <th style="width:50px">排名</th>
+          <th>#</th>
           <th>笔记标题</th>
-          <th style="width:100px">曝光量</th>
-          <th style="width:110px">封面 CTR</th>
-          <th style="width:110px">商卡 CTR</th>
+          <th>曝光量</th>
+          <th>封面CTR</th>
+          <th>商卡CTR</th>
         </tr>
       </thead>
       <tbody>
@@ -618,8 +473,8 @@
 
   <!-- 高曝光标题 -->
   <div class="section-label">
-    <div class="icon">📝</div>
-    <div class="text">本周高曝光标题参考</div>
+    <span class="icon">📝</span>
+    <span class="text">本周高曝光标题参考</span>
     <span class="tag">TOP 10</span>
   </div>
   <div class="titles-box">
@@ -638,8 +493,8 @@
 
   <!-- 二级类目分布 -->
   <div class="section-label">
-    <div class="icon">📦</div>
-    <div class="text">二级类目表现</div>
+    <span class="icon">📦</span>
+    <span class="text">二级类目表现</span>
     <span class="tag">按曝光量排序</span>
   </div>
   <div class="cat-grid">
@@ -654,9 +509,8 @@
 
 </div>
 
-<!-- ===== Footer ===== -->
 <div class="footer">
-  <strong>小红书电商</strong> · 女士内衣/男士内衣/家居服 行业 · 数据来源：小红书 BI 平台 · 每周自动更新<br>
+  小红书电商 · 女士内衣/男士内衣/家居服行业 · 数据来源：小红书 BI 平台 · 每周更新<br>
   生成时间：2026-05-12 17:12
 </div>
 
