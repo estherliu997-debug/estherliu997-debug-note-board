@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>女士内衣/男士内衣/家居服行业风向看板 · 小红书电商</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --red: #ff2442; --orange: #ff6b35;
+      --warm: #fff8f4; --card-bg: #ffffff;
+      --text: #1a1a1a; --text-sub: #888;
+      --border: #f0ebe4;
+    }
+    body { font-family: -apple-system, "PingFang SC", sans-serif; background: var(--warm); color: var(--text); }
+
+    .header {
+      background: linear-gradient(135deg, #ff2442 0%, #ff6b35 100%);
+      padding: 28px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .header-title { font-size: 22px; font-weight: 800; color: #fff; }
+    .header-sub { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 3px; }
+    .header-week { font-size: 28px; font-weight: 800; color: #fff; }
+    .header-date { font-size: 12px; color: rgba(255,255,255,0.7); }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+
+    .section-label {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 16px; font-weight: 800; color: var(--text);
+      margin: 36px 0 16px;
+    }
+    .section-label .icon { font-size: 20px; }
+    .tag {
+      font-size: 11px; font-weight: 600; padding: 3px 10px;
+      background: #fff0f2; color: var(--red); border-radius: 20px;
+    }
+
+    /* 基准卡片 */
+    .bench-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .bench-card {
+      background: var(--card-bg); border-radius: 16px;
+      border: 1.5px solid var(--border); padding: 20px;
+    }
+    .bench-card.top { border-color: #ffd700; }
+    .bench-card.low { border-color: #e0e0e0; }
+    .bench-tier { font-size: 13px; font-weight: 700; margin-bottom: 12px; }
+    .bench-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+    .bench-label { font-size: 12px; color: var(--text-sub); }
+    .bench-val { font-size: 22px; font-weight: 800; color: var(--red); }
+    .bench-unit { font-size: 12px; font-weight: 400; color: var(--text-sub); margin-left: 2px; }
+
+    /* 内容风向 */
+    .directions-box { background: var(--card-bg); border-radius: 16px; border: 1.5px solid var(--border); padding: 20px; }
+    .trend-item { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; line-height: 1.6; }
+    .trend-item:last-child { border-bottom: none; }
+
+    /* 封面候选表格 */
+    .table-wrap { background: var(--card-bg); border-radius: 16px; border: 1.5px solid var(--border); overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; }
+    th { background: #fff8f4; padding: 10px 14px; font-size: 12px; font-weight: 700; text-align: left; color: #666; }
+    td { padding: 10px 14px; font-size: 13px; border-top: 1px solid var(--border); }
+    td a { color: var(--red); text-decoration: none; }
+    td a:hover { text-decoration: underline; }
+
+    /* 标题列表 */
+    .titles-box { background: var(--card-bg); border-radius: 16px; border: 1.5px solid var(--border); padding: 20px; }
+    .title-item { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+    .title-item:last-child { border-bottom: none; }
+    .title-meta { font-size: 11px; color: var(--text-sub); margin-left: 8px; }
+
+    /* 二级类目 */
+    .cat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .cat-item { background: var(--card-bg); border-radius: 10px; border: 1px solid var(--border); padding: 12px 16px; font-size: 13px; }
+
+    .footer {
+      text-align: center; color: #aaa; font-size: 12px;
+      padding: 24px; border-top: 1px solid var(--border);
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div>
+    <div class="header-title">女士内衣/男士内衣/家居服 行业风向看板</div>
+    <div class="header-sub">小红书电商 · 商品笔记内容指引 · 共200篇有效笔记</div>
+  </div>
+  <div style="text-align:right">
+    <div class="header-week">W20</div>
+    <div class="header-date">20260505 — 20260512</div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- 行业基准 -->
+  <div class="section-label"><span class="icon">📊</span>行业基准数据<span class="tag">近7天 · 动销商家</span></div>
+  <div class="bench-grid">
+    <div class="bench-card top">
+      <div class="bench-tier">🏆 TOP商家</div>
+      <div class="bench-row">
+        <span class="bench-label">商笔 CTR</span>
+        <span class="bench-val">106.9<span class="bench-unit">%</span></span>
+      </div>
+      <div class="bench-row">
+        <span class="bench-label">商品转化率</span>
+        <span class="bench-val">10.8<span class="bench-unit">%</span></span>
+      </div>
+    </div>
+    <div class="bench-card avg">
+      <div class="bench-tier">📊 行业均值</div>
+      <div class="bench-row">
+        <span class="bench-label">商笔 CTR</span>
+        <span class="bench-val">31.7<span class="bench-unit">%</span></span>
+      </div>
+      <div class="bench-row">
+        <span class="bench-label">商品转化率</span>
+        <span class="bench-val">6.0<span class="bench-unit">%</span></span>
+      </div>
+    </div>
+    <div class="bench-card low">
+      <div class="bench-tier">⚠️ 待提升</div>
+      <div class="bench-row">
+        <span class="bench-label">商笔 CTR</span>
+        <span class="bench-val">0.2<span class="bench-unit">%</span></span>
+      </div>
+      <div class="bench-row">
+        <span class="bench-label">商品转化率</span>
+        <span class="bench-val">2.5<span class="bench-unit">%</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 本周内容风向 -->
+  <div class="section-label"><span class="icon">🔥</span>本周内容风向<span class="tag">基于真实数据分析</span></div>
+  <div class="directions-box">
+    <div class="trend-item">📌 情绪共鸣型（感动/破防/主理人故事），占比约1%</div>
+<div class="trend-item">📌 场景精准型（备考/宿舍/减脂等垂直场景），占比约0%</div>
+<div class="trend-item">📌 结果前置型（X天/X斤/断妆等效果描述），占比约16%</div>
+<div class="trend-item">📌 价格冲击型（超低价/包邮/尝鲜），占比约2%</div>
+
+  </div>
+
+  <!-- 高CTR封面候选 -->
+  <div class="section-label"><span class="icon">🖼️</span>高双高封面候选<span class="tag">封面CTR≥8% · 商卡CTR≥15%</span></div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>笔记标题</th>
+          <th>曝光量</th>
+          <th>封面CTR</th>
+          <th>商卡CTR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><a href="https://www.xiaohongshu.com/explore/69f1dbba000000003701f3d6" target="_blank">是谁！低领半杯细肩带 做出来了！😭快拍！！</a></td>
+          <td>16万</td>
+          <td>109.3%</td>
+          <td>23.7%</td>
+        </tr>
+<tr>
+          <td>2</td>
+          <td><a href="https://www.xiaohongshu.com/explore/69f8c8f70000000023006115" target="_blank">可不可以是平的没有两个耳朵？可以！去掉了</a></td>
+          <td>12万</td>
+          <td>106.2%</td>
+          <td>17.5%</td>
+        </tr>
+<tr>
+          <td>3</td>
+          <td><a href="https://www.xiaohongshu.com/explore/699c2d28000000000a033cca" target="_blank">我愿意称之为母亲节礼物天花板😎！！</a></td>
+          <td>12万</td>
+          <td>92.6%</td>
+          <td>28.9%</td>
+        </tr>
+<tr>
+          <td>4</td>
+          <td><a href="https://www.xiaohongshu.com/explore/69fc550a000000003701d446" target="_blank">老婆们！ “胸贴式”内衣我做出来了！！😎</a></td>
+          <td>9万</td>
+          <td>106.2%</td>
+          <td>15.0%</td>
+        </tr>
+<tr>
+          <td>5</td>
+          <td><a href="https://www.xiaohongshu.com/explore/69f81529000000003501f59a" target="_blank">设计师是女的吧！内裤缝合线痛点不卡分泌物</a></td>
+          <td>9万</td>
+          <td>109.4%</td>
+          <td>30.1%</td>
+        </tr>
+<tr>
+          <td>6</td>
+          <td><a href="https://www.xiaohongshu.com/explore/69f8ae1c0000000038034f8d" target="_blank">没戴胸贴…夏天的风都是凉飕飕的！</a></td>
+          <td>7万</td>
+          <td>108.7%</td>
+          <td>20.4%</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 本周高曝光标题 -->
+  <div class="section-label"><span class="icon">📝</span>本周高曝光标题参考<span class="tag">TOP 10</span></div>
+  <div class="titles-box">
+    <div class="title-item">「蕉树内衣三件39.9！凉感隐形还香香谁不爱」<span class="title-meta">81万曝光 · 封面CTR 2.0%</span></div>
+<div class="title-item">「“39块钱的衣服能好到哪里去……”」<span class="title-meta">72万曝光 · 封面CTR 1.2%</span></div>
+<div class="title-item">「沉浸式回答领口会不会变形❗️❗️❗️」<span class="title-meta">51万曝光 · 封面CTR 0.0%</span></div>
+<div class="title-item">「网友们的建议我们都收到了！！！！！」<span class="title-meta">47万曝光 · 封面CTR 0.1%</span></div>
+<div class="title-item">「才30+好穿到穿烂了！！！！」<span class="title-meta">43万曝光 · 封面CTR 0.3%</span></div>
+<div class="title-item">「我媳妇大副乳遮没了⁉️大U吊带遮副乳太牛了」<span class="title-meta">39万曝光 · 封面CTR 1.4%</span></div>
+<div class="title-item">「运动背心、束胸、粉底液内衣三合一！」<span class="title-meta">35万曝光 · 封面CTR 0.1%</span></div>
+<div class="title-item">「姐妹们！丝袜上身🈴集来咯‼️全拿捏🤏」<span class="title-meta">26万曝光 · 封面CTR 0.0%</span></div>
+<div class="title-item">「沉浸式回答船袜会不会掉跟❗️❗️❗️」<span class="title-meta">25万曝光 · 封面CTR 0.0%</span></div>
+<div class="title-item">「穿低领衣服的时候 真的不需要做那么高🙏」<span class="title-meta">24万曝光 · 封面CTR 104.3%</span></div>
+
+  </div>
+
+  <!-- 二级类目分布 -->
+  <div class="section-label"><span class="icon">📦</span>二级类目表现<span class="tag">按曝光量排序</span></div>
+  <div class="cat-grid">
+    <div class="cat-item">📦 吊带/背心/T恤：均值CTR 4.9%，共65篇</div>
+<div class="cat-item">📦 文胸：均值CTR 52.0%，共49篇</div>
+<div class="cat-item">📦 短袜/打底袜/丝袜/美腿袜：均值CTR 17.8%，共32篇</div>
+<div class="cat-item">📦 女士内裤（不含男士）：均值CTR 29.5%，共11篇</div>
+<div class="cat-item">📦 睡裙：均值CTR 3.3%，共12篇</div>
+<div class="cat-item">📦 睡衣/家居服套装：均值CTR 47.5%，共9篇</div>
+
+  </div>
+
+</div>
+
+<div class="footer">
+  小红书电商 · 女士内衣/男士内衣/家居服行业 · 数据来源：小红书 BI 平台 · 每周更新<br>
+  生成时间：2026-05-12 17:12
+</div>
+
+</body>
+</html>
